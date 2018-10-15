@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function handleSubmit(e) {
   e.preventDefault();
   document.querySelectorAll('#identicon span').forEach((el) => { el.style.backgroundColor = '' })
-  current = new Identicon(e.target['input-field'].value);
-  current.makeGrid();
+    if (e.target['input-field'].value !== '') {
+    current = new Identicon(e.target['input-field'].value);
+    current.makeGrid();
+    e.target['input-field'].value = ''
+  }
 }
