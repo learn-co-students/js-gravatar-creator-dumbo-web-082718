@@ -1,8 +1,12 @@
-function handleSubmit(e) {
-
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("identicon-form")
-  form.addEventListener("submit", handleSubmit)
-})
+  const form = document.querySelector("#identicon-form");
+  let current;
+  form.addEventListener('submit', handleSubmit);
+});
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.querySelectorAll('#identicon span').forEach((el) => { el.style.backgroundColor = '' })
+  current = new Identicon(e.target['input-field'].value);
+  current.makeGrid();
+}
